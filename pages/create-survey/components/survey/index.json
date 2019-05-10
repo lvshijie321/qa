@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "number-picker": "../number-picker/index",
+    "delete-button": "../delete-button/index"
+  }
+}

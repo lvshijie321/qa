@@ -1,0 +1,5 @@
+<view class="wrap">
+  <view class="left">-</view>
+  <view class="number">{{value}}</view>
+  <view class="right">+</view>
+</view>

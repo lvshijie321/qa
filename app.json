@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/survey-list/index",
+    "pages/answer-survey/index",
+    "pages/create-survey/index"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#7acfa6",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "问卷调查",
+    "backgroundColor": "#7acfa6",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "usingComponents": {
+    "loading": "/components/loading/index"
+  }
+}

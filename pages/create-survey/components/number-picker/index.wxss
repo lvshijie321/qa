@@ -1,0 +1,31 @@
+.wrap {
+  display: flex;
+
+}
+.left {
+  border-radius: 8rpx 0 0 8rpx;
+  border-right: 2rpx solid transparent;
+}
+
+.right {
+  border-radius: 0 8rpx 8rpx 0;
+  border-left: 2rpx solid transparent;
+}
+
+.left, .right {
+  border-color: rgb(220, 223, 230);
+  width: 40rpx;
+  font-size: 40rpx;
+  display: flex;
+  align-items: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  justify-content: center;
+  background: #7acfa6;
+}
+
+.number {
+  width: 60rpx;
+  text-align: center;
+  line-height: 50rpx;
+}

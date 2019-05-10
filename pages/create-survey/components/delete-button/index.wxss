@@ -1,0 +1,8 @@
+.wrap {
+  border: 1rpx solid #dcdfe6;
+  border-radius: 30rpx;
+  width: 60rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+}

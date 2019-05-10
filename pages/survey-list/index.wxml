@@ -1,0 +1,23 @@
+<view class="container">
+  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="fetchList">
+    <block wx:if="{{loading}}">
+      <loading />
+    </block>
+    <block wx:if="{{datas.length}}">
+      <view wx:for="{{datas}}" wx:key="{{index}}" class="qa" ontap="onTap" data-id="{{item.id}}">
+        <text>{{item.title_content}}</text>
+        <text>创建时间：{{item.created_at}}</text>
+        <text>答题数量：{{filter.answerQuantity(item.surveyItem)}}</text>
+      </view>
+      <view wx:if="{{noMore}}" class="no-more">- 没有更多的数据了 -</view>
+    </block>
+    <block wx:elif="{{total !== undefined}}">
+      <view class="no-data">
+        <image src='/assets/images/no-data.jpg'></image>
+        <text>暂时没有数据</text>
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+<wxs src="./index.wxs" module="filter" />

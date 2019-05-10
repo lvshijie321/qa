@@ -1,0 +1,54 @@
+<view class="wrap">
+  <view class="container" wx:if="{{!hasAnswer && detail && detail.list && detail.list.length}}">
+    <text class="title">{{detail.title_content}}</text>
+    <text class="prefix">{{detail.prefix_content}}</text>
+    <view class="question-container" wx:if="{{detail && detail.list && detail.list.length}}">
+      <view wx:if="{{item.type === 'blank' || item.type === 'radio' || item.type === 'multiple'}}" style="{{questionStyle[index] || ''}}" class="question" wx:for="{{detail.list}}" wx:key="index">
+        <view class='name'>{{item.entity.title}}</view>
+
+        <input wx:if="{{item.type === 'blank'}}" data-index="{{index}}" bindblur="onInputBlur" bindfocus="onInputFocus" value="{{detail.list[index].entity.value}}" />
+
+        <radio-group wx:elif="{{item.type === 'radio'}}" data-index="{{index}}" bindchange="onRadioChange">
+          <label wx:for="{{item.entity.items}}" wx:key="index" wx:for-item="radio">
+            <radio color="#F2646D" value="{{radio.name}}" /> {{radio.name}}
+          </label>
+        </radio-group>
+
+        <checkbox-group wx:elif="{{item.type === 'multiple'}}" data-index="{{index}}" bindchange="onCheckBoxChange">
+          <label wx:for="{{item.entity.items}}" wx:key="index" wx:for-item="multiple">
+            <checkbox color="#F2646D" value="{{multiple.name}}" /> {{multiple.name}}
+          </label>
+        </checkbox-group>
+
+      </view>
+
+      <view wx:if="{{hasNoSource}}" class="split"></view>
+
+      <view wx:if="{{item.type === 'radio_source' || item.type === 'multiple_source'}}" style="{{questionStyle[index] || ''}}" class="question" wx:for="{{detail.list}}" wx:key="index">
+        <view class='name'>{{item.entity.title}}</view>
+
+        <radio-group wx:if="{{item.type === 'radio_source'}}" data-index="{{index}}" bindchange="onRadioChange">
+          <label wx:for="{{item.entity.items}}" wx:key="index" wx:for-item="radio">
+            <radio color="#F2646D" value="{{radio.name}}" /> {{radio.name}}
+          </label>
+        </radio-group>
+
+        <checkbox-group wx:elif="{{item.type === 'multiple_source'}}" data-index="{{index}}" bindchange="onCheckBoxChange">
+          <label wx:for="{{item.entity.items}}" wx:key="index" wx:for-item="multiple">
+            <checkbox color="#F2646D" value="{{multiple.name}}" /> {{multiple.name}}
+          </label>
+        </checkbox-group>
+
+      </view>
+
+      <view class='submit' bindtap="submit">确 定</view>
+
+    </view>
+
+  </view>
+  <view wx:elif="{{detail && detail.list && detail.list.length}}" class="answered">
+    <text>感谢您抽出几分钟时间来参加本次答题！</text>
+    <image src="/assets/images/thanks.png" />
+  </view>
+  <loading wx:if="{{loading}}" />
+</view>

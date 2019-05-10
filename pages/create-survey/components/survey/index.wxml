@@ -1,0 +1,22 @@
+<view class="right ex-class">
+  <view class="aaaaaaaa">
+    <text>{{index}}</text>
+    <input placeholder="请填写填空题题目" />
+  </view>
+  <block wx:if="{{option.type !== 'blank'}}">
+    <view class="option" wx:for="{{option.optionList}}" wx:key="index">
+      <checkbox wx:if="{{option.type === 'multiple' || option.type=== 'multiple_source' }}" disabled />
+      <radio wx:elif="{{option.type === 'radio' || option.type === 'radio_source'}}" disabled />
+      <input value="{{item.option}}" />
+      <view class="score" wx:if="{{option.type === 'multiple_source' || option.type=== 'radio_source' }}">
+        分数：
+        <number-picker value="{{item.score}}"  />
+      </view>
+      <delete-button bindtap="deleteOption"/>
+    </view>
+    <view class="add" bindtap="addOption">
+      <view>+</view>
+      <text>添加选项</text>
+    </view>
+  </block>
+</view>

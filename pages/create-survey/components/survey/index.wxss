@@ -1,0 +1,157 @@
+.question2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1rpx solid rgb(220, 223, 230);
+  border-radius: 12rpx;
+  margin: 10rpx;
+  box-shadow: 0 0 30rpx rgb(220, 223, 230);
+  padding: 20rpx 0;
+}
+
+.question .type, .question2 .type {
+  display: flex;
+  justify-content: baseline;
+  margin: 16rpx;
+}
+.option {
+   display: flex;
+}
+.question .type text, .question2 .type text {
+ display: flex;
+ align-items: center;
+ margin: 0 20rpx 0 0;
+}
+
+.right .add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1rpx solid rgb(220, 223, 230);
+  width: 160rpx;
+  padding: 10rpx 26rpx;
+  border-radius: 10rpx;
+}
+ .right .add view {
+  border: 1rpx solid #606266;
+  border-radius: 50%;
+  width: 25rpx;
+  height: 25rpx;
+  line-height: 23rpx;
+}
+.question .type view, .question2  .type view{
+  border: 1rpx solid rgb(220, 223, 230);
+  border-radius: 8rpx;
+  padding: 10rpx 30rpx;
+  margin: 0 20rpx 0 0;
+}
+.aaaaaaaa {
+  display: flex;
+  align-items: baseline;
+}
+.question .split {
+  height: 1rpx;
+  background-color: rgb(220, 223, 230);
+  margin: 20rpx 0;
+}
+.question .title, .question2  .title {
+  font-size: 40rpx;
+  border: 1rpx dashed transparent;
+  padding: 12rpx 12rpx;
+}
+.question .title:hover, .question .thanks:hover,.question  .right input:hover {
+  border-color: rgb(220, 223, 230);
+}
+.question2 .title:hover, .question2 .thanks:hover,.question2   .right input:hover {
+  border-color: rgb(220, 223, 230);
+}
+.question .thanks {
+  margin: 0 30rpx;
+  border: 1rpx dashed transparent;
+  padding: 12rpx 12rpx;
+}
+.question2 .thanks {
+  border: 1rpx dashed transparent;
+  padding: 12rpx 12rpx;
+  margin: 0 10rpx;
+}
+
+.question .qa {
+  display: flex;
+  border: 1rpx dashed rgb(220, 223, 230);
+  margin: 30rpx;
+  border-radius: 10rpx;
+}
+ 
+
+.question >text {
+  padding: 10rpx 30rpx 30rpx 30rpx;
+}
+
+.question  .right {
+  display: flex;
+  flex-direction: column;
+  
+}
+.question  .right input {
+  border: 1rpx dashed transparent;
+  padding: 0 30rpx;
+  width:244rpx;
+}
+
+.question .right .add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1rpx solid rgb(220, 223, 230);
+  width: 160rpx;
+  padding: 10rpx 26rpx;
+  border-radius: 10rpx;
+}
+.question .right .add view {
+  border: 1rpx solid #606266;
+  border-radius: 50%;
+  width: 25rpx;
+  height: 25rpx;
+  line-height: 23rpx;
+}
+
+
+
+
+
+
+
+
+.question2  >text {
+  padding: 10rpx 30rpx 30rpx 30rpx;
+}
+
+.question2   .right {
+  display: flex;
+  flex-direction: column;
+  
+}
+.question2  .right input {
+  border: 1rpx dashed transparent;
+  padding: 0 12rpx;
+  width:244rpx;
+  margin: 0 12rpx;
+}
+
+.question2 .right .add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1rpx solid rgb(220, 223, 230);
+  width: 160rpx;
+  padding: 10rpx 26rpx;
+  border-radius: 10rpx;
+}
+.question2 .right .add view {
+  border: 1rpx solid #606266;
+  border-radius: 50%;
+  width: 25rpx;
+  height: 25rpx;
+  line-height: 23rpx;
+}

@@ -1,0 +1,179 @@
+.title {
+ 
+  font-size: 40rpx;
+ 
+  font-weight: bolder;
+ 
+  margin: 40rpx 0;
+ 
+}
+ 
+
+ 
+.prefix {
+ 
+  padding: 0 30rpx 40rpx 30rpx;
+ 
+  text-align: center;
+ 
+}
+ 
+
+ 
+.question-container {
+ 
+  max-height: 67%;
+ 
+  overflow: auto;
+ 
+  border-radius: 8rpx;
+ 
+  background-color: #7acfa6;
+ 
+  width: 90%;
+ 
+  padding: 40rpx 0;
+ 
+  margin: 0 0 50rpx 0;
+ 
+}
+ 
+
+ 
+.question {
+ 
+  padding: 20rpx 30rpx;
+ 
+  border: 1rpx dashed transparent;
+ 
+  border-radius: 10rpx;
+ 
+  margin: 30rpx;
+ 
+}
+ 
+
+ 
+ 
+ 
+.question .name {
+ 
+  line-height: 30rpx;
+ 
+  margin: 0 0 12rpx 0;
+ 
+}
+ 
+
+ 
+.question input {
+ 
+  width: 350rpx;
+ 
+  border-radius: 8rpx;
+ 
+  border: 1px solid rgb(220, 223, 230);
+ 
+  padding: 0 10rpx;
+ 
+}
+ 
+
+ 
+.question checkbox-group label, .question radio-group label {
+ 
+  margin-right: 30rpx;
+ 
+}
+ 
+
+ 
+.question radio, .question checkbox {
+ 
+  padding: 0 0 10rpx 0;
+ 
+}
+ 
+
+ 
+.submit {
+ 
+  padding: 20rpx;
+ 
+  margin: 80rpx 60rpx 60rpx 60rpx;
+ 
+  text-align: center;
+ 
+  border-radius: 10rpx;
+ 
+  color: white;
+ 
+  background-color: rgba(207, 252, 225, 0.6);
+ 
+}
+ 
+
+ 
+.split {
+ 
+  height: 1rpx;
+ 
+  background: rgba(207, 252, 225, 0.6);
+ 
+  margin: 30rpx 30rpx;
+ 
+}
+ 
+
+ 
+.answered {
+ 
+  display: flex;
+ 
+  flex-direction: column;
+ 
+  align-items: center;
+ 
+  position: absolute;
+ 
+
+ 
+  top: 50%;
+ 
+  transform: translateY(-90%);
+ 
+}
+ 
+
+ 
+.answered text {
+ 
+  margin-bottom: 30rpx;
+ 
+}
+ 
+
+ 
+.answered image {
+ 
+  width: 300rpx;
+ 
+  height: 300rpx;
+ 
+}
+ 
+
+ 
+.wrap {
+ 
+  display: flex;
+ 
+  justify-content: center;
+ 
+  position: relative;
+ 
+  height: 100%;
+ 
+  background-color: rgba(207, 252, 225, 0.6);
+ 
+}
