@@ -19,10 +19,10 @@
   <view class="question2">
     <input class="title" value="问卷标题" />
     <input class="thanks" value='感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！' />
-    <scroll-view scroll-y style='background:red;height:400rpx;'>
+    <scroll-view scroll-y style='background:red;height:700rpx;'>
       <movable-area style="background: green; height: 1500rpx;width: 100%;">
-        <movable-view wx:for="{{surveyList}}" wx:key="index" data-index='{{index}}' option="{{item}}" style="width: 100%;height:200rpx;" direction="vertical">
-          <survey class="aaaaabc" index="{{index + 1}}"  wx:for="{{surveyList}}" wx:key="index" data-index='{{index}} ' option="{{item}}" /> 
+        <movable-view wx:for="{{surveyList}}" wx:key="index" x="0" y="{{moveableViewList[index].y + 'rpx'}}" data-index='{{index}}' damping="{{30}}" inertia  option="{{item}}" style="background: red;width: 100%;height:{{moveableViewList[index].height}}rpx;" direction="vertical"  bindtouchend="touchEnd" bindtouchstart="startMove" bindchange="onMove">
+          <survey class="aaa" index="{{index + 1}}" data-index='{{index}} ' option="{{item}}" /> 
         </movable-view> 
       </movable-area>
     </scroll-view>

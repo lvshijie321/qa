@@ -22,7 +22,9 @@
  align-items: center;
  margin: 0 20rpx 0 0;
 }
-
+.right {
+  
+}
 .right .add {
   display: flex;
   align-items: center;
