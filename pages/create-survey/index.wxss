@@ -145,6 +145,9 @@
   height: 25rpx;
   line-height: 23rpx;
 }
+.actived {
+  background: yellow!important;
+}
 .zhuti {
   height: 100%;
   width: 100%;

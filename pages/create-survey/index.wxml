@@ -19,10 +19,14 @@
   <view class="question2">
     <input class="title" value="问卷标题" />
     <input class="thanks" value='感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！' />
-    <scroll-view scroll-y style='background:red;height:700rpx;'>
+    <scroll-view scroll-y style='height:700rpx;'>
       <movable-area style="background: green; height: 1500rpx;width: 100%;">
-        <movable-view wx:for="{{surveyList}}" wx:key="index" x="0" y="{{moveableViewList[index].y + 'rpx'}}" data-index='{{index}}' damping="{{30}}" inertia  option="{{item}}" style="background: red;width: 100%;height:{{moveableViewList[index].height}}rpx;" direction="vertical"  bindtouchend="touchEnd" bindtouchstart="startMove" bindchange="onMove">
-          <survey class="aaa" index="{{index + 1}}" data-index='{{index}} ' option="{{item}}" /> 
+        <movable-view class="{{moveableViewList[index].actived ? 'actived' : ''}}" wx:for="{{surveyList}}" wx:key="index" x="0" y="{{moveableViewList[index].y + 'rpx'}}" data-index='{{index}}' damping="{{30}}" inertia  option="{{item}}" style="z-index:{{moveableViewList[index].zIndex}};background: red;width: 100%;height:{{moveableViewList[index].height}}rpx;" direction="vertical"  bindtouchend="touchEnd" bindtouchstart="startMove" bindchange="onMove">
+          <survey class="aaa" index="{{index + 1}}" data-index='{{index}} ' option="{{item}}" ex-class="{{moveableViewList[index].actived ? 'actived' : ''}}"/> 
+        </movable-view> 
+        <!-- 克隆移动的元素-->
+        <movable-view  hidden="{{moveChunk.hidden}}" x="0" y="{{moveChunk.y + 'rpx'}}" data-index='{{1}}'  animation="{{false}}" inertia  option="{{moveChunk}}" style="background: gray;z-index:0;width: 100%;height:{{moveChunk.height}}rpx;" direction="vertical">
+          <survey class="aaa" index="{{1}}" data-index='{{1}} ' option="{{moveChunk}}" /> 
         </movable-view> 
       </movable-area>
     </scroll-view>

@@ -1,6 +1,11 @@
 Page({
   data: {
+    movable: false,
     surveyList: [],
+    moveChunk: {
+      y: 0,
+      hidden: true,
+    },
     movableViewInfo: {
       y: 0,
       showClass: 'none',
@@ -20,19 +25,65 @@ Page({
     }
   },
   touchEnd(e) {
-    debugger
+    this.data.movable = false
+    const index = e.currentTarget.dataset.index
+    Object.assign(this.data.moveableViewList[index], {
+      zIndex: 0,
+      actived: false,
+    })
+    
+    this.setData({
+      moveableViewList: this.data.moveableViewList,
+      //@总结：用对象取代数组，可能会加快视图更新，因为只对那一个节点更新
+      //surveyList: this.data.surveyList
+    })
   },
   onMove(e) {
-    debugger
+    if (!this.data.movable) return
+    const moveChunk = this.data.moveChunk
+    const index = e.currentTarget.dataset.index
+    const offsetY = e.detail.y // 单位是 px
+    console.log(offsetY)
+    const moveBottomY = moveChunk.height + offsetY * 2 - 20
+    const replaceChunk = this.data.moveableViewList[index + 1]
+    if (moveBottomY >= replaceChunk.y) {
+      
+      this.data.surveyList.splice(index, 2, this.data.surveyList[index + 1], moveChunk)
+      this.setData({
+        surveyList: this.data.surveyList,
+      })
+      debugger
+    }
+    
   },
   startMove(e) {
-    debugger
+    // startMove 里不要触发 surveyList 的 setData 更新，手机端会导致无法滑动
+    this.data.movable = true
+    // 克隆移动的元素
+    const index = e.currentTarget.dataset.index
+    Object.assign(this.data.moveableViewList[index], {
+      zIndex: 1,
+      actived: true,
+    })
+    Object.assign(this.data.moveChunk = this.data.surveyList[index], {
+      height: this.data.moveableViewList[index].height,
+      y: this.data.moveableViewList[index].y,
+      hidden: false,
+    })
+    this.setData({
+      moveChunk: this.data.moveChunk,
+      moveableViewList: this.data.moveableViewList,
+      //@总结：用对象取代数组，可能会加快视图更新，因为只对那一个节点更新
+      //surveyList: this.data.surveyList
+    })
   },
   addSurvey(e) {
     this.data.surveyList.push({
       type: e.currentTarget.dataset.type,
     })
-    this.data.moveableViewList.push({})
+    this.data.moveableViewList.push({
+      zIndex: 0,
+    })
     const index = this.data.surveyList.length - 1
     //this.data.surveyList[index].height = 1
     this.setData({
