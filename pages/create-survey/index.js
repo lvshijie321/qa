@@ -37,6 +37,9 @@ Page({
       },
     })
   },
+  calY(index,) {
+
+  },
   onMove(e) {
     const len = Object.keys(this.data.moveableViewList).length
     if (len < 2) return
@@ -51,22 +54,27 @@ Page({
       let replaceChunk = this.data.moveableViewList[index + 1]
       const bottomY = moveChunk.y + moveChunk.height - offsetY
       if (bottomY >= replaceChunk.y && moveChunk.index < replaceChunk.index) {// 触发替换条件，且不能重复替换
+        replaceChunk.y = moveChunk.y
+
       //@todo:连续替换二次能否替换
 
-        let temp = replaceChunk.zIndex
-        replaceChunk.zIndex = moveChunk.zIndex
-        moveChunk.zIndex = temp
+        // let temp = replaceChunk.zIndex
+        // replaceChunk.zIndex = moveChunk.zIndex
+        // moveChunk.zIndex = temp
        // 先交换 zIndex ，等下再次交换，意味 zIndex 不需要交换
 
-//go moveableViewList 的值是不是没有替换过来
-        temp = replaceChunk
-        replaceChunk = moveChunk
-        moveChunk = temp
+ 
+        // debugger
+        // this.data.cloneChunk = this.data.moveableViewList[index + 1]
+        // debugger
+        // this.data.moveableViewList[index + 1] = moveChunk
+        // moveChunk = temp
 
+        // debugger
+        // temp = this.data.surveyList[index]
+        // this.data.surveyList[index] = this.data.surveyList[index + 1]
+        // this.data.surveyList[index + 1] = temp
         debugger
-        temp = this.data.surveyList[index]
-        this.data.surveyList[index] = this.data.surveyList[index + 1]
-        this.data.surveyList[index + 1] = temp
         console.log(this.data.surveyList)
       }
     } else { // 向上滑动
