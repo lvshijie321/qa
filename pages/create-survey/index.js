@@ -7,6 +7,7 @@ Page({
       hidden: true,
     },
     direct: [],
+    gap: 20,
     _: true,
     movableViewInfo: {
       y: 0,
@@ -37,58 +38,81 @@ Page({
       },
     })
   },
-  calY(index,) {
-
+  calY(index) {
+    // 计算滑动模块上面所有模块的 offsetY 累计值
+    const prevChunk = this.data.moveableViewList[index - 1]
+    let accY = prevChunk
+                ? prevChunk.y + prevChunk.height + this.data.gap
+                : 0
+    // 计算替换模块的 height 和 gap
+    accY += this.data.moveableViewList[index + 1].height + this.data.gap
+    return accY    
+  },
+  oneOfObject(index, o) {
+    return Object.keys(o).find(key => o[key].index === index)
   },
   onMove(e) {
     const len = Object.keys(this.data.moveableViewList).length
     if (len < 2) return
 
     if (!this.data.movable) return // moveableview 动画移动，非用户手动移动
-
-    const index = Number(e.currentTarget.dataset.index)
-    let moveChunk = this.data.moveableViewList[index] 
+    // 只要不释放，e.currentTarget.dataset.index 永远是滑动模块的索引
+    let moveChunk = this.data.moveableViewList[e.currentTarget.dataset.index]
+    console.log('滑动模块绑定的索引：' + e.currentTarget.dataset.index)
+    const index = moveChunk.index // 滑动模块位置改变后的临时索引（临时是相对于未释放而言）
+   // console.log('滑动模块临时索引：' + index)
     const offsetY = moveChunk.y - e.detail.y * 2 // 单位是 px
     if (offsetY < 0) { // 向下滑动
       if (index === len - 1) return 
       let replaceChunk = this.data.moveableViewList[index + 1]
+      
       const bottomY = moveChunk.y + moveChunk.height - offsetY
       if (bottomY >= replaceChunk.y && moveChunk.index < replaceChunk.index) {// 触发替换条件，且不能重复替换
-        replaceChunk.y = moveChunk.y
-
+        // 替换项：替换模块的 y、index ，但不需要渲染
+        let { index: tempIndex, y:tempY,} = moveChunk
+        Object.assign(moveChunk, {
+          y: this.calY(moveChunk.index),
+          index: replaceChunk.index,
+        })
+        // 替换项：surveyList 的元素顺序，但不需要渲染
+        let temp = this.data.surveyList[index + 1]
+        this.data.surveyList[index + 1] = this.data.surveyList[index]
+        this.data.surveyList[index] = temp
+        // 替换项：被替换模块的 y、 index，cloneChunk 的 y
+        this.setData({
+          [`moveableViewList.${index + 1}.y`]: tempY,
+          [`moveableViewList.${index + 1}.index`]: tempIndex,
+          'cloneChunk.y': moveChunk.y
+        })
       //@todo:连续替换二次能否替换
-
-        // let temp = replaceChunk.zIndex
-        // replaceChunk.zIndex = moveChunk.zIndex
-        // moveChunk.zIndex = temp
-       // 先交换 zIndex ，等下再次交换，意味 zIndex 不需要交换
-
- 
-        // debugger
-        // this.data.cloneChunk = this.data.moveableViewList[index + 1]
-        // debugger
-        // this.data.moveableViewList[index + 1] = moveChunk
-        // moveChunk = temp
-
-        // debugger
-        // temp = this.data.surveyList[index]
-        // this.data.surveyList[index] = this.data.surveyList[index + 1]
-        // this.data.surveyList[index + 1] = temp
-        debugger
-        console.log(this.data.surveyList)
+        
       }
     } else { // 向上滑动
       if (index === 0) return 
       const replaceChunk = this.data.moveableViewList[index - 1]
-      console.log(offsetY)
       const topY = replaceChunk.y - offsetY
       if (topY <= replaceChunk.y + replaceChunk.height && moveChunk.index > replaceChunk.index) {// 触发替换条件，且不能重复替换
-      //@todo:连续替换二次能否替换
-        [replaceChunk.index, moveChunk.index] = [moveChunk.index, replaceChunk.index]
-        const temp = this.data.surveyList[index]
-        this.data.surveyList[index] = this.data.surveyList[index - 1]
-        this.data.surveyList[index - 1] = temp
+        // 替换项：替换模块的 y、index ，但不需要渲染
+        let tempIndex = moveChunk.index
+        Object.assign(moveChunk, {
+          y: replaceChunk.y,
+          index: replaceChunk.index,
+        })
+        // 替换项：surveyList 的元素顺序，但不需要渲染
+        let temp = this.data.surveyList[index - 1]
+        this.data.surveyList[index - 1] = this.data.surveyList[index]
+        this.data.surveyList[index] = temp
+
         console.log(this.data.surveyList)
+        
+        // 替换项：被替换模块的 y、 index，cloneChunk 的 y
+        this.setData({
+          [`moveableViewList.${index - 1}.y`]: replaceChunk.y + moveChunk.height + this.data.gap,
+          [`moveableViewList.${index - 1}.index`]: tempIndex,
+          'cloneChunk.y': replaceChunk.y
+        })
+      //@todo:连续替换二次能否替换
+        console.log(this.data.moveableViewList)
         debugger
       }
     }
@@ -160,7 +184,7 @@ Page({
         this.setData({
           [`moveableViewList.${index}`]: {
             ...this.data.moveableViewList[index],
-            y: this.calHeight(this.data.moveableViewList, 20),
+            y: this.calHeight(this.data.moveableViewList, this.data.gap),
           }
         })
       })
