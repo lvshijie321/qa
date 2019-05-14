@@ -29,6 +29,8 @@ Page({
   },
   touchEnd(e) {
     this.data.movable = false
+    this.data._onMoveChunkIndex === undefined
+    this.data._directList = undefined
     const index = e.currentTarget.dataset.index
     this.setData({
       [`moveableViewList.${index}`]: {
@@ -38,6 +40,7 @@ Page({
       },
     })
   },
+  //@todo向上滑动，这个函数合适吗
   calY(index) {
     // 计算滑动模块上面所有模块的 offsetY 累计值
     const prevChunk = this.data.moveableViewList[index - 1]
@@ -45,33 +48,45 @@ Page({
                 ? prevChunk.y + prevChunk.height + this.data.gap
                 : 0
     // 计算替换模块的 height 和 gap
+    debugger
     accY += this.data.moveableViewList[index + 1].height + this.data.gap
+    
     return accY    
   },
   oneOfObject(index, o) {
     return Object.keys(o).find(key => o[key].index === index)
   },
   onMove(e) {
+    // 检测模块个数，至少 2 个
     const len = Object.keys(this.data.moveableViewList).length
     if (len < 2) return
 
-    if (!this.data.movable) return // moveableview 动画移动，非用户手动移动
+    // 不能是 moveableview 动画移动，只能是用户手动移动
+    if (this.data._onMoveChunkIndex === undefined || this.data._onMoveChunkIndex !== e.currentTarget.dataset.index) return
+
+    // 检测移动方向
+    const y = e.detail.y * 2 // 单位是 px
+    !this.data._directList && (this.data._directList = [])
+    this.data._directList.length === 2
+      ? this.data._directList.splice(0, 2, this.data._directList[this.data._directList.length - 1], y)
+      : this.data._directList.push(y)
+    if (this.data._directList.length != 2) return
+
     // 只要不释放，e.currentTarget.dataset.index 永远是滑动模块的索引
     let moveChunk = this.data.moveableViewList[e.currentTarget.dataset.index]
-    console.log('滑动模块绑定的索引：' + e.currentTarget.dataset.index)
     const index = moveChunk.index // 滑动模块位置改变后的临时索引（临时是相对于未释放而言）
-   // console.log('滑动模块临时索引：' + index)
-    const offsetY = moveChunk.y - e.detail.y * 2 // 单位是 px
-    if (offsetY < 0) { // 向下滑动
+    
+    if (this.data._directList[0] - this.data._directList[1] < 0) { // 向下滑动
       if (index === len - 1) return 
       let replaceChunk = this.data.moveableViewList[index + 1]
-      
-      const bottomY = moveChunk.y + moveChunk.height - offsetY
+      const bottomY = y + moveChunk.height
       if (bottomY >= replaceChunk.y && moveChunk.index < replaceChunk.index) {// 触发替换条件，且不能重复替换
+        !this.data.arriveCount && (this.data.arriveCount === 0)
+        this.data.arriveCount++
         // 替换项：替换模块的 y、index ，但不需要渲染
         let { index: tempIndex, y:tempY,} = moveChunk
         Object.assign(moveChunk, {
-          y: this.calY(moveChunk.index),
+          y: this.calY(moveChunk.index),//@todo:有错，cal放在后面
           index: replaceChunk.index,
         })
         // 替换项：surveyList 的元素顺序，但不需要渲染
@@ -84,14 +99,12 @@ Page({
           [`moveableViewList.${index + 1}.index`]: tempIndex,
           'cloneChunk.y': moveChunk.y
         })
-      //@todo:连续替换二次能否替换
-        
+        debugger
       }
     } else { // 向上滑动
       if (index === 0) return 
       const replaceChunk = this.data.moveableViewList[index - 1]
-      const topY = replaceChunk.y - offsetY
-      if (topY <= replaceChunk.y + replaceChunk.height && moveChunk.index > replaceChunk.index) {// 触发替换条件，且不能重复替换
+      if (y <= replaceChunk.y + replaceChunk.height && moveChunk.index > replaceChunk.index) {// 触发替换条件，且不能重复替换
         // 替换项：替换模块的 y、index ，但不需要渲染
         let tempIndex = moveChunk.index
         Object.assign(moveChunk, {
@@ -102,8 +115,6 @@ Page({
         let temp = this.data.surveyList[index - 1]
         this.data.surveyList[index - 1] = this.data.surveyList[index]
         this.data.surveyList[index] = temp
-
-        console.log(this.data.surveyList)
         
         // 替换项：被替换模块的 y、 index，cloneChunk 的 y
         this.setData({
@@ -111,31 +122,9 @@ Page({
           [`moveableViewList.${index - 1}.index`]: tempIndex,
           'cloneChunk.y': replaceChunk.y
         })
-      //@todo:连续替换二次能否替换
-        console.log(this.data.moveableViewList)
-        debugger
+        
       }
     }
-    // debugger
-    // let cloneChunk = this.data.cloneChunk
-   
-    
-    
-    // const moveBottomY = cloneChunk.height + offsetY * 2 - 20
-    // let replaceChunk = this.data.moveableViewList[index + 1]
-    // if (this.data._ && moveBottomY >= replaceChunk.y) {
-    //   this.data._ = false
-    //   this.data.surveyList.splice(index, 2, this.data.surveyList[index + 1], cloneChunk)
-    //   const temp = replaceChunk
-    //   replaceChunk = cloneChunk
-    //   cloneChunk = temp
-    //   // this.data.moveableViewList[index].y = offsetY * 2
-    //   this.setData({
-    //     moveableViewList: this.data.moveableViewList,
-    //     cloneChunk: this.data.cloneChunk
-    //   })
-
-    // }
 
   },
   /**
@@ -144,7 +133,7 @@ Page({
    */
   startMove(e) {
     this.data.movable = true
-    const index = e.currentTarget.dataset.index
+    const index = this.data._onMoveChunkIndex= e.currentTarget.dataset.index
     this.setData({
       cloneChunk: {
         ...this.data.moveableViewList[index],
