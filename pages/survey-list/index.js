@@ -24,15 +24,10 @@ Page({
   },
   onLoad: function () {
     //this._()
-    this.setTitle()
     this.fetchList()
 
   },
-  setTitle() {
-    wx.setNavigationBarTitle({
-      title: '问卷列表'
-    })
-  },
+  
   _() {
     if (app.globalData.userInfo) {
       this.setData({

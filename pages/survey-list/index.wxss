@@ -1,31 +1,39 @@
+.head {
+  height: 294rpx;
+  width: 723rpx;
+  margin: 0 0 38rpx 27rpx;
+}
 .qa {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 20rpx 40rpx;
-  background: -webkit-linear-gradient(-40deg, white, #7acfa6);
-  margin: 0 0 10rpx 0;
-  box-shadow: 0rpx 4rpx 10rpx #7acfa6;
+  padding: 30rpx 39rpx;
+  background: #F4F7FF;
+  margin:0 30rpx 30rpx 30rpx;
+  width: 690rpx;
+  height: 198rpx;
+
 }
 
 .qa text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #959595;
+   
   max-width: 700rpx;
   font-size: 24rpx;
   line-height: 36rpx;
 }
 
 .qa text:nth-child(1) {
-  color: #222222;
+  color: #4F77FE;
   font-weight: bolder;
-  line-height: 60rpx;
-  font-size: 32rpx;
+  line-height: 70rpx;
+  font-size: 38rpx;
 }
 
 .qa text:nth-child(3) {
-  color: #F2646D;
+   
 }
 
 .no-data {

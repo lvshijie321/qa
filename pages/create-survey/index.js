@@ -105,6 +105,8 @@ Page({
       if (index === 0) return 
       const replaceChunk = this.data.moveableViewList[index - 1]
       if (y <= replaceChunk.y + replaceChunk.height && moveChunk.index > replaceChunk.index) {// 触发替换条件，且不能重复替换
+        !this.data.arriveCount && (this.data.arriveCount === 0)
+        this.data.arriveCount++
         // 替换项：替换模块的 y、index ，但不需要渲染
         let tempIndex = moveChunk.index
         Object.assign(moveChunk, {

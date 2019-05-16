@@ -1,13 +1,14 @@
 <view class="container">
   <scroll-view scroll-y style="height: 100%;" bindscrolltolower="fetchList">
+    <image class="head" src="/assets/images/home_bg@2x.png"></image>
     <block wx:if="{{loading}}">
       <loading />
     </block>
     <block wx:if="{{datas.length}}">
       <view wx:for="{{datas}}" wx:key="{{index}}" class="qa" ontap="onTap" data-id="{{item.id}}">
         <text>{{item.title_content}}</text>
-        <text>创建时间：{{item.created_at}}</text>
         <text>答题数量：{{filter.answerQuantity(item.surveyItem)}}</text>
+        <text>创建时间：{{item.created_at}}</text>
       </view>
       <view wx:if="{{noMore}}" class="no-more">- 没有更多的数据了 -</view>
     </block>
