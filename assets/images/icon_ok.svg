@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="135px" height="130px" viewBox="0 0 135 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_ok</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#E4EAFF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="91.5" height="64.5" rx="5"></rect>
+        <path d="M5,0 L51.4160156,0 L66,14.5075684 L66,82.5 C66,85.2614237 63.7614237,87.5 61,87.5 L5,87.5 C2.23857625,87.5 3.38176876e-16,85.2614237 0,82.5 L0,5 C-3.38176876e-16,2.23857625 2.23857625,5.07265313e-16 5,0 Z" id="path-4"></path>
+        <rect id="path-6" x="14" y="29" width="5.5" height="10.5" rx="2.75"></rect>
+        <filter x="-72.7%" y="-19.0%" width="245.5%" height="176.2%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.193982111 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-8" x="46.5" y="29" width="5.5" height="10.5" rx="2.75"></rect>
+        <filter x="-72.7%" y="-19.0%" width="245.5%" height="176.2%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.193982111 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M19.5,49.5 L46.5,49.5 L46.5,49.7288136 C46.5,57.1846577 40.4558441,63.2288136 33,63.2288136 L33,63.2288136 C25.5441559,63.2288136 19.5,57.1846577 19.5,49.7288136 L19.5,49.5 Z" id="path-10"></path>
+        <filter x="-31.5%" y="-47.3%" width="163.0%" height="223.8%" filterUnits="objectBoundingBox" id="filter-11">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.180536685 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="问卷列表" transform="translate(-120.000000, -114.000000)">
+            <g id="icon_ok" transform="translate(120.000000, 114.500000)">
+                <polygon id="Rectangle-9" fill="url(#linearGradient-1)" fill-rule="nonzero" points="0 0 135 0 135 104.5 67.5 129.5 0 104.5"></polygon>
+                <g id="Rectangle-2" transform="translate(22.000000, 27.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Mask" fill="#B4C3FF" fill-rule="nonzero" xlink:href="#path-2"></use>
+                    <rect fill="#90A6FF" fill-rule="nonzero" mask="url(#mask-3)" x="-5.5" y="56" width="102" height="15"></rect>
+                </g>
+                <g id="Group-2" transform="translate(34.500000, 15.500000)">
+                    <g id="Rectangle-3">
+                        <mask id="mask-5" fill="white">
+                            <use xlink:href="#path-4"></use>
+                        </mask>
+                        <use id="Mask" fill="#3964FF" fill-rule="nonzero" xlink:href="#path-4"></use>
+                        <rect fill="#1B52F4" fill-rule="nonzero" mask="url(#mask-5)" x="-2" y="81" width="71" height="8.5"></rect>
+                    </g>
+                    <g id="Rectangle-5" fill-rule="nonzero">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-6"></use>
+                    </g>
+                    <g id="Rectangle-5" fill-rule="nonzero">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-8"></use>
+                    </g>
+                    <g id="Rectangle-6" fill-rule="nonzero">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-11)" xlink:href="#path-10"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-10"></use>
+                    </g>
+                    <path d="M51.5,0 L66,14.5 L56.5,14.5 C53.7385763,14.5 51.5,12.2614237 51.5,9.5 L51.5,0 Z" id="Rectangle-10" fill="#1B52F5" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
