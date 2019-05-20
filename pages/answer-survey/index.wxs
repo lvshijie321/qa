@@ -1,0 +1,12 @@
+var getType = function (type) {
+  console.log(type)
+  if (type === 'radio ' || 'radio_source') {
+    return '(单选)'
+  } else if (type === 'multiple_source' || type === 'multiple') {
+    return '(多选)'
+  }
+  return ''
+}
+module.exports = {
+  getType: getType,
+}

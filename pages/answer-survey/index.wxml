@@ -1,10 +1,15 @@
+<view class="head">
+  <image src="/assets/images/dati_bg@2x.png"></image>
+  <text>问卷标题</text>
+  <text>感谢您能抽出几分钟时间来参加本次答题，现在我们马上开始吧！</text>
+</view>
+
 <view class="wrap">
   <view class="container" wx:if="{{!hasAnswer && detail && detail.list && detail.list.length}}">
-    <text class="title">{{detail.title_content}}</text>
-    <text class="prefix">{{detail.prefix_content}}</text>
+    
     <view class="question-container" wx:if="{{detail && detail.list && detail.list.length}}">
       <view wx:if="{{item.type === 'blank' || item.type === 'radio' || item.type === 'multiple'}}" style="{{questionStyle[index] || ''}}" class="question" wx:for="{{detail.list}}" wx:key="index">
-        <view class='name'>{{item.entity.title}}</view>
+        <view class='name'>{{index + 1 > 9 ? index + 1 : '0' + (index + 1)}}   {{item.entity.title}}   {{filter.getType(item.type)}}</view>
 
         <input wx:if="{{item.type === 'blank'}}" data-index="{{index}}" bindblur="onInputBlur" bindfocus="onInputFocus" value="{{detail.list[index].entity.value}}" />
 
@@ -52,3 +57,5 @@
   </view>
   <loading wx:if="{{loading}}" />
 </view>
+
+<wxs src="./index.wxs" module="filter" />

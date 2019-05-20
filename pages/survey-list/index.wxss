@@ -58,71 +58,71 @@
 
 .no-more {
   text-align: center;
-  color: #b3b3b3;
+  color: #404D73;
   padding: 16rpx 0;
   font-size: 24rpx;
   animation: no-more-animation 2.5s;
   animation-fill-mode: forwards;
-  background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+  background: -webkit-linear-gradient(-40deg, white, #4F77FE);
 }
 
 @keyframes no-more-animation {
   10% {
     opacity: 0.9;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   20% {
     opacity: 1;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
   70% {
     opacity: 0.9;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   75% {
     opacity: 0.8;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   80% {
     opacity: 0.7;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   85% {
     opacity: 0.6;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   90% {
     opacity: 0.5;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   95% {
     opacity: 0.4;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   96% {
     opacity: 0.3;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   97% {
     opacity: 0.2;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   98% {
     opacity: 0.1;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 
   100% {
     opacity: 0;
-    background: -webkit-linear-gradient(-40deg, white, #7acfa6);
+    background: -webkit-linear-gradient(-40deg, white, #4F77FE);
   }
 }
