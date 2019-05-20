@@ -159,10 +159,18 @@ Page({
   }
   ,
   submit() {
+
     const param = {
       title_content: this.title_content,
       prefix_content: this.prefix_content,
+      list: 1
     }
+    // this.data._data_.map((item) => {
+    //   type: item.type,
+    //     entity: {
+    //     title: 
+    //     }
+    // })
   },
   addSurvey(e) {
     this.data.direct = []
@@ -309,8 +317,8 @@ Page({
   },
 
   onchange(e) {
-    e.detail
-    e.currentTarget.dataset.index
+    !this.data._data_ && (this.data._data_ = [])
+    this.data._data_[e.currentTarget.dataset.index] = e.detail
     debugger
   },
   /**

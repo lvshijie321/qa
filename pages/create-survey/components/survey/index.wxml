@@ -10,9 +10,9 @@
       <input value="{{item.option}}" data-index="{{index}}" bindinput='onInputCheck'/>
       <view class="score" wx:if="{{option.type === 'multiple_source' || option.type=== 'radio_source' }}">
         分数：
-        <number-picker value="{{item.score}}"  />
+        <number-picker data-index="{{index}}" bindchange="scoreChange" value="{{item.score}}"  />
       </view>
-      <delete-button data-index="{{index}}" bindtap="deleteOption"/>
+      <delete-button  data-index="{{index}}" bindtap="deleteOption"/>
     </view>
     <view class="add" bindtap="addOption">
       <view>+</view>

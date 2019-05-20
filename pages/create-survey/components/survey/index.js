@@ -24,6 +24,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+
+    scoreChange(e) {
+     
+      this.data.option.optionList[e.currentTarget.dataset.index].score = e.detail
+      this.triggerEvent('change',  this.data.option)
+    },
     obOption(newValue, oldValue) {
       this.addOne(newValue)
     },
@@ -50,29 +56,17 @@ Component({
       this.setData({
         option: newValue
       })
-    
-      setTimeout(() => this.triggerEvent('change', {
-        type: this.data.option.type,
-        value: this.data.option.optionList.map((item, index) => {
-          return item.option
-        })
-      }), 0)
+      setTimeout(() => this.triggerEvent('change', this.data.option), 0)
     },
     onInput(e) {
       this.triggerEvent('change', {
-        value: e.detail.value,
+        title: e.detail.value,
         type: this.data.option.type
       })
     },
     onInputCheck(e) {
-      this.triggerEvent('change', {
-        type: this.data.option.type,
-        value: this.data.option.optionList.map((item, index) => {
-          return index === e.currentTarget.dataset.index
-            ? e.detail.value
-            : item.option
-        })
-      })
+      this.data.option.title = e.detail.value
+      this.triggerEvent('change', this.data.option)
     },
   }
 })
