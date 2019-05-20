@@ -12,7 +12,7 @@
         分数：
         <number-picker value="{{item.score}}"  />
       </view>
-      <delete-button bindtap="deleteOption"/>
+      <delete-button data-index="{{index}}" bindtap="deleteOption"/>
     </view>
     <view class="add" bindtap="addOption">
       <view>+</view>

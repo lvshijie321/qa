@@ -30,9 +30,10 @@ Component({
     addOption() {
       this.addOne(this.data.option)
     },
-    deleteOption() {
+    deleteOption(e) {
+      this.data.option.optionList.splice(e.currentTarget.dataset.index, 1)
       this.setData({
-        optionList: (this.data.optionList.pop(), this.data.optionList)
+        'option.optionList': this.data.option.optionList
       })
     },
     addOne(newValue) {
