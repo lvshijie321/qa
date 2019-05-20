@@ -115,16 +115,16 @@ Page({
     }
     wx.$request.surveyItem(param)
       .then(res => {
-        wx.showToast({
-          title: '提交成功',
-          icon: 'success',
-          duration: 2000
-        })
+        // wx.showToast({
+        //   title: '提交成功',
+        //   icon: 'success',
+        //   duration: 2000
+        // })
         this.setData({
           hasAnswer: true,
         })
         wx.setNavigationBarTitle({
-          title: '完成答题'
+          title: '答题结束'
         })
       }).catch(err => {
         wx.showToast({

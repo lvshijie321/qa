@@ -4,8 +4,8 @@
   margin: 40rpx 0;
 }
 
-.container {
-  width: 100%;
+.container1 {
+  margin: 30rpx;
 }
 
 .prefix {
@@ -14,16 +14,15 @@
 }
 
 .question-container {
-  max-height: 67%;
   overflow: auto;
   border-radius: 8rpx;
-  width: 90%;
-  margin: 0 0 50rpx 0;
+  width: 100%;
+  
 }
 
 .question {
   padding: 20rpx 0rpx;
-  border: 1rpx dashed transparent;
+  xborder: 1rpx dashed transparent;
   border-radius: 10rpx;
   margin: 0;
 }
@@ -34,9 +33,9 @@
 }
 
 .question input {
-  width: 350rpx;
-  border-radius: 8rpx;
-  border: 1px solid rgb(220, 223, 230);
+  width: 95%;
+  border-radius: 6rpx;
+  border: 1px solid #404D73;
   padding: 0 10rpx;
 }
 
@@ -54,7 +53,7 @@
   padding: 20rpx;
   margin: 80rpx 60rpx 60rpx 60rpx;
   text-align: center;
-  border-radius: 10rpx;
+  border-radius: 4rpx;
   color: white;
   background-color: #577DFF;
 }
@@ -75,7 +74,10 @@
 }
 
 .answered text {
-  margin-bottom: 30rpx;
+  margin: 30rpx 0;
+  font-size:34rpx;
+  color:rgba(35,35,35,1);
+  font-weight: bold;
 }
 
 .answered image {
@@ -84,8 +86,7 @@
 }
 
 .wrap {
-  display: flex;
-  justify-content: center;
+ 
   position: relative;
   height: 100%;
 }
