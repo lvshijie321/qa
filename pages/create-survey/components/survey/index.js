@@ -18,6 +18,8 @@ Component({
   data: {
   },
 
+ 
+  
   /**
    * 组件的方法列表
    */
@@ -46,6 +48,29 @@ Component({
       }
       this.setData({
         option: newValue
+      })
+    
+      setTimeout(() => this.triggerEvent('change', {
+        type: this.data.option.type,
+        value: this.data.option.optionList.map((item, index) => {
+          return item.option
+        })
+      }), 0)
+    },
+    onInput(e) {
+      this.triggerEvent('change', {
+        value: e.detail.value,
+        type: this.data.option.type
+      })
+    },
+    onInputCheck(e) {
+      this.triggerEvent('change', {
+        type: this.data.option.type,
+        value: this.data.option.optionList.map((item, index) => {
+          return index === e.currentTarget.dataset.index
+            ? e.detail.value
+            : item.option
+        })
       })
     },
   }

@@ -108,7 +108,14 @@
 
 
 
-
+.submit {
+  width: 400rpx;
+  border: 1rpx solid #888;
+  border-radius: 4rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  margin: 0 auto;
+}
 
 
 

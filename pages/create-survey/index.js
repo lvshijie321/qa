@@ -1,5 +1,7 @@
 Page({
   data: {
+    titleValue: "问卷标题",
+    prefixValue: '感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！',
     movable: false,
     surveyList: {},
     cloneChunk: {
@@ -99,7 +101,6 @@ Page({
           [`moveableViewList.${index + 1}.index`]: tempIndex,
           'cloneChunk.y': moveChunk.y
         })
-        debugger
       }
     } else { // 向上滑动
       if (index === 0) return 
@@ -149,6 +150,19 @@ Page({
       },
       
     })
+  },
+  onInputTitle(e) {
+    this.title_content = e.detail.value
+  },
+  onInputPrefix(e) {
+    this.prefix_content = e.detail.value
+  }
+  ,
+  submit() {
+    const param = {
+      title_content: this.title_content,
+      prefix_content: this.prefix_content,
+    }
   },
   addSurvey(e) {
     this.data.direct = []
@@ -294,9 +308,16 @@ Page({
     })
   },
 
+  onchange(e) {
+    e.detail
+    e.currentTarget.dataset.index
+    debugger
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.prefixValue = this.prefix_content
+    this.titleValue = this.title_content
   },
 })
