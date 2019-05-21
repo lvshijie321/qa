@@ -1,5 +1,0 @@
-{
-  "usingComponents": {
-    "survey": "./components/survey/index"
-  }
-}

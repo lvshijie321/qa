@@ -21,7 +21,7 @@
   height: 50rpx;
   line-height: 50rpx;
   justify-content: center;
-  background: #7acfa6;
+  background: #4F77FE;
 }
 
 .number {
