@@ -32,9 +32,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
     scoreChange(e) {
-     
       this.data.option.optionList[e.currentTarget.dataset.index].score = e.detail
       this.triggerEvent('change',  this.data.option)
     },
@@ -42,7 +40,7 @@ Component({
       this.addOne(newValue)
     },
     addOption() {
-      this.addOne(this.data.option)
+      this.addOne(this.data.option, true)
     },
     deleteOption(e) {
       if (this.data.option.optionList.length === 1) return;
@@ -50,8 +48,9 @@ Component({
       this.setData({
         'option.optionList': this.data.option.optionList
       })
+      this.triggerEvent('updateDom', this.data.index)
     },
-    addOne(newValue) {
+    addOne(newValue, flag) {
       !newValue.title && (newValue.title = '')
       if (!newValue.optionList) {
         const option = { option: '选项1' }
@@ -65,7 +64,10 @@ Component({
       this.setData({
         option: newValue
       })
-      setTimeout(() => this.triggerEvent('change', this.data.option), 0)
+      setTimeout(() => {
+        flag && this.triggerEvent('updateDom',this.data.index)
+        this.triggerEvent('change', this.data.option)
+      }, 0)
     },
     onInput(e) {
       this.data.option.title = e.detail.value

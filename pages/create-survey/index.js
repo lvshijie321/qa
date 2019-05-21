@@ -51,10 +51,67 @@ Page({
       prevChunk.y + prevChunk.height + this.data.gap :
       0
     // 计算替换模块的 height 和 gap
-    debugger
     accY += this.data.moveableViewList[index + 1].height + this.data.gap
 
     return accY
+  },
+  _____(height, index, array) {
+    this.data.moveableViewList[index] = { // 先赋值 moveableViewList[index]，再 calHeight
+      ...this.data.surveyList[index],
+      height: height * 2 + 6, // el.height 单位是 px，转化为 rpx。解决 moveableView 设置 height ，实际渲染的高度会减少的问题，所以加上 6
+      zIndex: 0,
+      index: Number(index),
+    }
+    this.setData({
+      [`moveableViewList.${index}`]: {
+        ...this.data.moveableViewList[index],
+        y: this.calHeight(array ? array : this.data.moveableViewList, this.data.gap),
+      }
+    })
+    
+  },
+  handleCalHeight(index, callback, array) {
+    this.fetchHeight(index, '.aaa')
+      .then(el => {
+        this._____(el.height, index, array)// 先赋值 moveableViewList[index]，再 calHeight
+
+        // this.setData({
+        //   [`moveableViewList.${index}`]: {
+        //     ...this.data.moveableViewList[index],
+        //     y: this.calHeight(array ? array : this.data.moveableViewList, this.data.gap),
+        //   }
+        // })
+
+
+        // this.data.moveableViewList[index] = { // 先赋值 moveableViewList[index]，再 calHeight
+        //   ...this.data.surveyList[index],
+        //   height: el.height * 2 + 6, // el.height 单位是 px，转化为 rpx。解决 moveableView 设置 height ，实际渲染的高度会减少的问题，所以加上 6
+        //   zIndex: 0,
+        //   index: Number(index),
+        // }
+
+        callback && callback()
+      })
+  },
+  copyObject(from, len, target) {
+    const o = {}
+    for (let i = 0; i < len; i++) {
+      o[i] = target[i]
+    }
+    return o
+  },
+  updateDom(e) {
+    
+    const len = Object.keys(this.data.moveableViewList).length
+    this.handleCalHeight(e.detail, () => {
+      for (let i = e.detail + 1; i < len; i++) {
+        this._____(this.data.moveableViewList[i].height/2, i)
+      }
+
+      this.setData({
+        [`moveableViewList`]: this.data.moveableViewList
+      })
+    }, this.copyObject(0, e.detail + 1, this.data.moveableViewList))
   },
   oneOfObject(index, o) {
     return Object.keys(o).find(key => o[key].index === index)
@@ -178,14 +235,16 @@ Page({
             const o = {
               name: _item.option
             };
-              (item.type === 'multiple_source' || item.type === 'radio_source') &&
+            (item.type === 'multiple_source' || item.type === 'radio_source') &&
               (o.source = _item.score)
             return o
           }))
         return o
       }))
     }
-    this.setData({ loading: true })
+    this.setData({
+      loading: true
+    })
     wx.$request.createSurvey(param)
       .then(res => {
         wx.showToast({
@@ -222,26 +281,28 @@ Page({
       //   index,
       // },
     })
-    this.fetchHeight(index, '.aaa')
-      .then(el => {
-        this.data.moveableViewList[index] = { // 先赋值 moveableViewList[index]，再 calHeight
-          ...this.data.surveyList[index],
-          height: el.height * 2 + 6, // el.height 单位是 px，转化为 rpx。解决 moveableView 设置 height ，实际渲染的高度会减少的问题，所以加上 6
-          zIndex: 0,
-          index: Number(index),
-        }
-        this.setData({
-          [`moveableViewList.${index}`]: {
-            ...this.data.moveableViewList[index],
-            y: this.calHeight(this.data.moveableViewList, this.data.gap),
-          }
-        })
-      })
+    this.handleCalHeight(index)
+    // this.fetchHeight(index, '.aaa')
+    //   .then(el => {
+    //     this.data.moveableViewList[index] = { // 先赋值 moveableViewList[index]，再 calHeight
+    //       ...this.data.surveyList[index],
+    //       height: el.height * 2 + 6, // el.height 单位是 px，转化为 rpx。解决 moveableView 设置 height ，实际渲染的高度会减少的问题，所以加上 6
+    //       zIndex: 0,
+    //       index: Number(index),
+    //     }
+    //     this.setData({
+    //       [`moveableViewList.${index}`]: {
+    //         ...this.data.moveableViewList[index],
+    //         y: this.calHeight(this.data.moveableViewList, this.data.gap),
+    //       }
+    //     })
+    //   })
 
 
   },
   calHeight(o, offsetY) {
     return Object.keys(o).reduce((acc, item, index) => {
+      debugger
       return acc += ((index === 0) ?
         0 :
         o[index - 1].height + offsetY)
@@ -289,9 +350,6 @@ Page({
     pageInfo.selectedIndex = startIndex
     pageInfo.scrollY = false
     pageInfo.startIndex = startIndex
-
-
-
   },
 
   dragMove: function (event) {
@@ -365,5 +423,9 @@ Page({
    */
   onLoad: function (options) {
     this.setTitle()
+    //     setTimeout(() =>{
+    // debugger
+    //       this.setData({ surveyList: this.data.surveyList })
+    //     },6000)
   },
 })
