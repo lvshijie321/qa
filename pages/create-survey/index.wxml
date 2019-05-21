@@ -20,7 +20,7 @@
     <scroll-view scroll-y style='height:700rpx;'>
       <movable-area style="background: green; height: 1500rpx;width: 100%;">
         <movable-view class="{{moveableViewList[index].actived ? 'actived' : ''}}" wx:for="{{surveyList}}" wx:key="index" x="0" y="{{moveableViewList[index].y + 'rpx'}}" data-index='{{index}}' damping="{{30}}" inertia  style="z-index:{{moveableViewList[index].zIndex}};background: red;width: 100%;height:{{moveableViewList[index].height}}rpx;" direction="vertical"  bindtouchend="touchEnd" bindtouchstart="startMove" bindchange="onMove">
-          <survey class="aaa" index="{{index + 1}}" data-index='{{index}}' bindchange="onchange"  option="{{item}}" ex-class="{{moveableViewList[index].actived ? 'actived' : ''}}"/> 
+          <survey class="aaa" index="{{index}}" data-index='{{index}}' bindchange="onchange"  option="{{item}}" ex-class="{{moveableViewList[index].actived ? 'actived' : ''}}"/> 
         </movable-view> 
         <!-- 克隆移动的元素-->
         <!-- <movable-view  hidden="{{cloneChunk.hidden}}" x="0" y="{{cloneChunk.y + 'rpx'}}" data-index='{{1}}'  animation="{{false}}" inertia style="background: gray;z-index:{{cloneChunk.zIndex}};width: 100%;height:{{cloneChunk.height}}rpx;" direction="vertical">
@@ -35,3 +35,5 @@
 
 
 </view>
+
+<loading wx:if="{{loading}}" />

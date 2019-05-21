@@ -8,7 +8,14 @@ Component({
       type: Object,
       observer: 'obOption'
     },
-    index: Number
+    index: {
+      type:Number,
+      observer(val) {
+        this.setData({
+          _index: Number(val) + 1
+        })
+      }
+    }
   },
   
   externalClasses: ['ex-class'],
@@ -16,6 +23,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    _index: 1,
   },
 
  
@@ -46,11 +54,11 @@ Component({
       !newValue.title && (newValue.title = '')
       if (!newValue.optionList) {
         const option = { option: '选项1' }
-        !!(newValue.type === 'multiple_source' || newValue.type === 'radio_source') && (option.score = 1)
+        !!(newValue.type === 'multiple_source' || newValue.type === 'radio_source') && (option.score = 0)
         newValue.optionList = [option]
       } else {
         const option = { option: `选项${newValue.optionList.length + 1}` }
-        !!(newValue.type === 'multiple_source' || newValue.type === 'radio_source') && (option.score = 1)
+        !!(newValue.type === 'multiple_source' || newValue.type === 'radio_source') && (option.score = 0)
         newValue.optionList.push(option)
       }
       this.setData({
@@ -59,13 +67,11 @@ Component({
       setTimeout(() => this.triggerEvent('change', this.data.option), 0)
     },
     onInput(e) {
-      this.triggerEvent('change', {
-        title: e.detail.value,
-        type: this.data.option.type
-      })
+      this.data.option.title = e.detail.value
+      this.triggerEvent('change', this.data.option)
     },
     onInputCheck(e) {
-      this.data.option.title = e.detail.value
+      this.data.option.optionList[e.currentTarget.dataset.index].option = e.detail.value
       this.triggerEvent('change', this.data.option)
     },
   }

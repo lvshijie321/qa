@@ -1,6 +1,6 @@
 <view class="right ex-class">
   <view class="aaaaaaaa">
-    <text>{{index}}</text>
+    <text>{{_index}}</text>
     <input placeholder="请填写填空题题目"  bindinput="onInput" />
   </view>
   <block wx:if="{{option.type !== 'blank'}}">
