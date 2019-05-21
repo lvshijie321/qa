@@ -117,6 +117,7 @@
   margin: 20rpx auto;
   padding: 20rpx;
   position: fixed;
+  background: #fff;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
