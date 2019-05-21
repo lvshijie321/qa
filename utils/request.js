@@ -18,6 +18,6 @@ const request = opt => data => new Promise((resolve, reject) => {
 })
 
 wx.$request = {}
-apis.forEach(item => wx.$request[item.url] = request(item))
+apis.forEach(item => wx.$request[item.name] = request(item))
 
  

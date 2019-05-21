@@ -186,7 +186,7 @@ Page({
       }))
     }
     this.setData({ loading: true })
-    wx.$request.survey(param)
+    wx.$request.createSurvey(param)
       .then(res => {
         wx.showToast({
           title: '提交成功',
