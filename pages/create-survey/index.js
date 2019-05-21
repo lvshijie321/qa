@@ -105,7 +105,7 @@ Page({
     const len = Object.keys(this.data.moveableViewList).length
     this.handleCalHeight(e.detail, () => {
       for (let i = e.detail + 1; i < len; i++) {
-        this._____(this.data.moveableViewList[i].height/2, i)
+        this._____(this.data.moveableViewList[i].height / 2, i, this.copyObject(0, i + 1, this.data.moveableViewList))
       }
 
       this.setData({
