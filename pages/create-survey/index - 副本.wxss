@@ -116,6 +116,10 @@
   text-align: center;
   margin: 20rpx auto;
   padding: 20rpx;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
