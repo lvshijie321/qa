@@ -110,11 +110,11 @@
 
 .submit {
   box-sizing: border-box;
-  width: 95%;
-  border: 1rpx solid #888;
+  width: 92%;
+  border: 1rpx solid rgb(220, 223, 230);
   border-radius: 8rpx;
   text-align: center;
-  margin: 0 auto;
+  margin: 20rpx auto;
   padding: 20rpx;
 }
 

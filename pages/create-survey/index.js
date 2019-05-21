@@ -270,6 +270,11 @@ Page({
     //   'movableViewInfo.y': this.data.pageInfo.startY - (this.data.pageInfo.rowHeight / 2)
     // })
   },
+  setTitle() {
+    wx.setNavigationBarTitle({
+      title: '创建问卷'
+    })
+  },
   dragStart: function (event) {
     var startIndex = event.target.dataset.index
     this.setData({
@@ -359,5 +364,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setTitle()
   },
 })
