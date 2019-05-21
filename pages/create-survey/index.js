@@ -69,7 +69,7 @@ Page({
 
     // 检测移动方向
     const y = e.detail.y * 2 // 单位是 px
-      !this.data._directList && (this.data._directList = [])
+    !this.data._directList && (this.data._directList = [])
     this.data._directList.length === 2 ?
       this.data._directList.splice(0, 2, this.data._directList[this.data._directList.length - 1], y) :
       this.data._directList.push(y)
@@ -86,11 +86,11 @@ Page({
       if (bottomY >= replaceChunk.y && moveChunk.index < replaceChunk.index) { // 触发替换条件，且不能重复替换
         !this.data.arriveCount && (this.data.arriveCount === 0)
         this.data.arriveCount++
-          // 替换项：替换模块的 y、index ，但不需要渲染
-          let {
-            index: tempIndex,
-            y: tempY,
-          } = moveChunk
+        // 替换项：替换模块的 y、index ，但不需要渲染
+        let {
+          index: tempIndex,
+          y: tempY,
+        } = moveChunk
         Object.assign(moveChunk, {
           y: this.calY(moveChunk.index), //@todo:有错，cal放在后面
           index: replaceChunk.index,
@@ -112,8 +112,8 @@ Page({
       if (y <= replaceChunk.y + replaceChunk.height && moveChunk.index > replaceChunk.index) { // 触发替换条件，且不能重复替换
         !this.data.arriveCount && (this.data.arriveCount === 0)
         this.data.arriveCount++
-          // 替换项：替换模块的 y、index ，但不需要渲染
-          let tempIndex = moveChunk.index
+        // 替换项：替换模块的 y、index ，但不需要渲染
+        let tempIndex = moveChunk.index
         Object.assign(moveChunk, {
           y: replaceChunk.y,
           index: replaceChunk.index,
@@ -172,13 +172,13 @@ Page({
             title: item.title,
 
           }
-        }
+        };
         item.type !== 'blank' && (o.entity.items =
           item.optionList.map(_item => {
             const o = {
               name: _item.option
-            }
-            (item.type === 'multiple_source' || item.type === 'radio_source') &&
+            };
+              (item.type === 'multiple_source' || item.type === 'radio_source') &&
               (o.source = _item.score)
             return o
           }))
@@ -270,7 +270,7 @@ Page({
     //   'movableViewInfo.y': this.data.pageInfo.startY - (this.data.pageInfo.rowHeight / 2)
     // })
   },
-  dragStart: function(event) {
+  dragStart: function (event) {
     var startIndex = event.target.dataset.index
     this.setData({
       tapOne: this.data.surveyList[startIndex]
@@ -289,7 +289,7 @@ Page({
 
   },
 
-  dragMove: function(event) {
+  dragMove: function (event) {
     var flag = false
     var surveyList = this.data.surveyList
     var pageInfo = this.data.pageInfo
@@ -333,7 +333,7 @@ Page({
 
   },
 
-  dragEnd: function(event) {
+  dragEnd: function (event) {
     // 重置页面数据
     var pageInfo = this.data.pageInfo
     pageInfo.readyPlaceIndex = null
@@ -358,6 +358,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
   },
 })
