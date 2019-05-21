@@ -45,6 +45,7 @@ Component({
       this.addOne(this.data.option)
     },
     deleteOption(e) {
+      if (this.data.option.optionList.length === 1) return;
       this.data.option.optionList.splice(e.currentTarget.dataset.index, 1)
       this.setData({
         'option.optionList': this.data.option.optionList

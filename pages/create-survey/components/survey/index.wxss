@@ -20,6 +20,9 @@
 .option {
    display: flex;
 }
+.option radio,.option checkbox{
+   margin: 0 0 0 10rpx;
+}
 .question .type text, .question2 .type text {
  display: flex;
  align-items: center;
@@ -36,6 +39,7 @@
   width: 160rpx;
   padding: 10rpx 26rpx;
   border-radius: 10rpx;
+  margin-left: 10rpx;
 }
  .right .add view {
   border: 1rpx solid #606266;
@@ -53,6 +57,9 @@
 .aaaaaaaa {
   display: flex;
   align-items: baseline;
+}
+.aaaaaaaa text {
+  padding: 0 10rpx;
 }
 .question .split {
   height: 1rpx;
