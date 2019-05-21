@@ -68,7 +68,7 @@ Page({
         y: this.calHeight(array ? array : this.data.moveableViewList, this.data.gap),
       }
     })
-    
+
   },
   handleCalHeight(index, callback, array) {
     this.fetchHeight(index, '.aaa')
@@ -101,7 +101,7 @@ Page({
     return o
   },
   updateDom(e) {
-    
+
     const len = Object.keys(this.data.moveableViewList).length
     this.handleCalHeight(e.detail, () => {
       for (let i = e.detail + 1; i < len; i++) {
