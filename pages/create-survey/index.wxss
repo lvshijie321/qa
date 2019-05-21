@@ -15,7 +15,7 @@
   justify-content: space-between;
   border: 1rpx solid rgb(220, 223, 230);
   border-radius: 12rpx;
-  margin: 10rpx;
+  margin: 30rpx;
   box-shadow: 0 0 30rpx rgb(220, 223, 230);
   padding: 20rpx 0;
 }
