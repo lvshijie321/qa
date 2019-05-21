@@ -7,10 +7,23 @@ Page({
     questionStyle: [],
     hasAnswer: false,
   },
+  onShareAppMessage(res) {
+    return {
+      title: '开始答题',
+      path: '/pages/answer-survey/index?id=' + this.data._id,
+      success: function (res) {
+        // 转发成功
 
+        
+      },
+      fail: function (res) {
+         
+      }
+    }
+  },
   onLoad: function (options) {
     this.setTitle()
-    this.fetchDetail(options.id)
+    this.fetchDetail(this.data._id = options.id)
   },
 
   onInputBlur(e) {

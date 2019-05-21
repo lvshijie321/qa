@@ -10,8 +10,8 @@ module.exports = [
     method: 'POST',
   },
   // 创建问卷
-  {
-    url: 'survey',
-    method: 'POST',
-  },
+  // {
+  //   url: 'survey',
+  //   method: 'POST',
+  // },
 ]
